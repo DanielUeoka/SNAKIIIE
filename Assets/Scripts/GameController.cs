@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
 
     public Transform Food;
     public GameObject TailPrefab;
+    
 
     public int lines = 13;
     public int columns = 29;
@@ -29,6 +31,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public GameObject PainelGameOver;
     [SerializeField] public GameObject MapaGameplay;
+    [SerializeField] public text txtscore;
+    [SerializeField] public text txtHS;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -77,22 +81,22 @@ public class GameController : MonoBehaviour
         {
             case Direction.DOWN:
                 nexPos = Vector3.down;
-                Head.rotation = Quaternion.Euler(0, 0, 90);
+                Head.rotation = Quaternion.Euler(0, 0, 180);
                 break;
             
             case Direction.LEFT:
                 nexPos = Vector3.left;
-                Head.rotation = Quaternion.Euler(0, 0, 0);
+                Head.rotation = Quaternion.Euler(0, 0, 90);
                 break;
             
             case Direction.RIGHT:
                 nexPos = Vector3.right;
-                Head.rotation = Quaternion.Euler(0, 0, 180);
+                Head.rotation = Quaternion.Euler(0, 0, -90);
                 break;
             
             case Direction.UP:
                 nexPos = Vector3.up;
-                Head.rotation = Quaternion.Euler(0, 0, -90);
+                Head.rotation = Quaternion.Euler(0, 0, 0);
                 break;
         }
 
@@ -105,6 +109,7 @@ public class GameController : MonoBehaviour
             Vector3 temp = t.position;
             t.position = lastPos;
             lastPos = temp;
+            t.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
 
         if (!isGameOver)
@@ -115,15 +120,19 @@ public class GameController : MonoBehaviour
     public void Eat()
     {
         //print("Comeu");
-        SetFood();
+        
         Vector3 tailPosition = Head.position;
-        if(Tail.Count > 0)
+        if (Tail.Count > 0)
         {
             tailPosition = Tail[Tail.Count - 1].position;
         }
 
-        GameObject temp = Instantiate(TailPrefab, tailPosition, transform.localRotation);
+        GameObject temp = Instantiate(TailPrefab, tailPosition, transform.localRotation, MapaGameplay.transform);
         Tail.Add(temp.transform);
+        score += 1
+        txtscore.text = score.ToString();
+        SetFood();
+
     }
 
     void SetFood()

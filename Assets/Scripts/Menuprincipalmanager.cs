@@ -12,7 +12,7 @@ public class Menuprincipalmanager : MonoBehaviour
     [SerializeField] private GameObject Mapagameplay; //Variavel do Objeto de cena da gameplay
     [SerializeField] private GameObject Painelpause; //Variavel do Objeto de cena do pause
     [SerializeField] private GameObject PainelOpcoesPause; //Variavel do Objeto de cena do pause
-    [SerializeField] public GameObject PainelGameOver;
+    public GameObject PainelGameOver;
 
     public void Jogar()
     {
@@ -60,11 +60,13 @@ public class Menuprincipalmanager : MonoBehaviour
     public void abrirpause() //Função do botão de abrir o painel de pause
     {
         Painelpause.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void fecharpause() //Função do botão de fechar o painel de pause (Resume)
     {
         Painelpause.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void VoltarMainMenu() //Função do botão de voltar para o menu principal do menu de pause

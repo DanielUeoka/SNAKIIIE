@@ -44,11 +44,13 @@ public class GameController : MonoBehaviour
     public UltimoScore ultimoScoreScript;
     public AudioSource audioSourceSFXEAT;
     public AudioClip eatSound;
+    public AudioSource audioSourceSFXHit;
+    public AudioClip hitSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        
         StartCoroutine("MoveSnake");
         SetFood();
         hiscore = PlayerPrefs.GetInt("hiscore");
@@ -172,6 +174,10 @@ public class GameController : MonoBehaviour
     {
         isGameOver = true;
         Time.timeScale = 0;
+            if (hitSound != null && audioSourceSFXHit != null)
+            {
+            audioSourceSFXHit.PlayOneShot(hitSound);
+            }
         if (score > hiscore)
         {
             PlayerPrefs.SetInt("hiscore", score);

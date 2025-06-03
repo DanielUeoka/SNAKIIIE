@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Menuprincipalmanager : MonoBehaviour
 {
-    //SeializeField é para deixar visivel no inspector
+    //SeializeField é para deixar as variáveis privadas visiveis no inspector
     [SerializeField] private string NomeDaScene; //variável Sring com o nome do cenário
     [SerializeField] private GameObject PainelMenuPrincipal; //Variavel do Objeto de cena do menu principal
     [SerializeField] private GameObject PainelOpcoes; //Variavel do Objeto de cena das opções
@@ -19,13 +19,6 @@ public class Menuprincipalmanager : MonoBehaviour
         SceneManager.LoadScene(NomeDaScene);
     }
 
-    public void ComecarJogo() //Função do botão de jogar (Fechar a cena de menu principal e abrir a cena de gameplay)
-    {
-        PainelMenuPrincipal.SetActive(false);
-        Painelpause.SetActive(false);
-        PainelOpcoesPause.SetActive(false);
-        Mapagameplay.SetActive(true);
-    }
 
     public void Desistir() //Função do botão de desistir(Fechar a cena de gameplay e abrir a cena de menu principal)
     {
@@ -85,12 +78,6 @@ public class Menuprincipalmanager : MonoBehaviour
     public void FecharOpcoesPause() //Função do botão de fechar o menu de opções do menu de pause
     {
         PainelOpcoesPause.SetActive(false);
-    }
-
-    public void Reiniciar()
-    {
-        PainelGameOver.SetActive(false);
-        Mapagameplay.SetActive(true);
     }
 
     public void Sairdojogo()

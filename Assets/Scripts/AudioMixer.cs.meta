@@ -1,14 +1,2 @@
 fileFormatVersion: 2
-guid: 7c7afbc86c4748b4d81793d598458ebb
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences:
-  - SliderMenuPrincipal: {instanceID: 0}
-  - SliderMenuOpcoesPause: {instanceID: 0}
-  - MixadorAudio: {fileID: 24100000, guid: 6662b810278c98745bf8e37bfc41e5d2, type: 2}
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+guid: 53dfa62d9957deb47bbeb74dc87b3247
